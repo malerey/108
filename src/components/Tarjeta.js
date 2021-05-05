@@ -10,12 +10,18 @@ import styled from 'styled-components'
 
 const Boton = styled.button`
   background-color: blue;
-  border: ${props => props.primario ? '2px solid red' : 'none'};
-  color: white;
-
+  border: ${({ primario }) => primario ? '2px solid red' : 'none'};
+  color: ${({ theme }) => theme.primary};
+  font-size: ${props => props.theme.sizes.p};
+  font-family: ${props => props.theme.fonts.families.button};
+  
   &:hover {
     background-color: white;
     color: blue;
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.small}) {
+    background-color: red
   }
 `;
 
@@ -32,7 +38,18 @@ const Titulo = styled.h2`
 `;
 
 const TarjetaContainer = styled.article`
-border: 1px solid black
+  border: 1px solid black;
+  
+  @media (max-width: 1000px) {
+    border: 2px solid red;
+    background-color: yellow;
+  }
+
+  @media (max-width: 600px) {
+    border: 2px solid green;
+    background-color: blue;
+  }
+
 `;
 
 const Tarjeta = ({nombre}) => {
